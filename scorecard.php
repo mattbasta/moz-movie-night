@@ -21,7 +21,10 @@ if($cookie) {
 		$vote_table = $db->get_table("votes");
 		
 		// Fetch a list of all of the movies.
-		$movie_list = $movie_table->fetch(true, FETCH_TOKENS);
+		$movie_list = $movie_table->fetch(
+			array("hidden"=>false),
+			FETCH_TOKENS
+		);
 		$movie_scores = array();
 		if($movie_list != false) {
 			foreach($movie_list as $movie) {
