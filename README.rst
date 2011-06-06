@@ -1,3 +1,4 @@
+--------------------------------------
 Mozilla Movie Night Voting Application
 --------------------------------------
 
@@ -10,4 +11,11 @@ http://github.com/mattbasta/interchange
 
 Cloud should be loaded as a library:
 http://cloud.serverboy.net/
+
+Setup
+=====
+
+The first step is to get the database together. You can find a schme in ``setup/setup.sql``. Just run that to create the necessary tables.
+
+The second step is to make the appropriate settings file. Modify ``endpoint/settings.template.php`` with the info that it requires (FB app info, SQL info). Save the file as ``endpoint/settings.php``.
 
