@@ -44,7 +44,7 @@ $.PeriodicalUpdater('scorecard.php', {
 	</div>
 	<div class="clear"></div>
 	<p>Or add a movie:</p>
-	<form action="/projects/movies/add_movie.php" method="post" class="notice_box">
+	<form action="add_movie.php" method="post" class="notice_box">
 		<label>Movie Name</label>
 		<input type="text" name="name" />
 		

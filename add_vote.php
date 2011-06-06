@@ -19,6 +19,6 @@ if($cookie) {
 			$data
 		);
 	else
-		$votes->insert_row(0, $data);
-	header("Location: /projects/movies/");
+		$votes->insert($data);
+	header("Location: index.php");
 }

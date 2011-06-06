@@ -19,7 +19,7 @@ function get_facebook_cookie($app_id, $application_secret) {
 }
 
 $cookie = get_facebook_cookie(FACEBOOK_APP_ID, FACEBOOK_SECRET);
-$db = cloud::create_db(
+$db = cloud::connect(
 	'mysql',
 	$db_credentials
 );
