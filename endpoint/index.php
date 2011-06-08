@@ -13,17 +13,26 @@ require("include.php");
 <script src="http://github.com/RobertFischer/JQuery-PeriodicalUpdater/raw/master/jquery.periodicalupdater.js" type="text/javascript"></script>
 <script type="text/javascript">
 <!--
-$.PeriodicalUpdater('scorecard.php', {
-    method: 'get',
-    data: '',
-    minTimeout: 1000,
-    maxTimeout: 15000,
-    multiplier: 1.5,
-    type: 'text',
-    maxCalls: 0,
-    autoStop: 0
-}, function(data) {
-	$("#scorecard").html(data);
+$(document).ready(function() {
+    var $pu = $.PeriodicalUpdater('scorecard.php', {
+        method: 'get',
+        data: '',
+        minTimeout: 1000,
+        maxTimeout: 15000,
+        multiplier: 1.5,
+        type: 'text',
+        maxCalls: 0,
+        autoStop: 0
+    }, function(data) {
+    	  $('#scorecard').html(data);
+    });
+    // TODO: Mouseover/mouseout is not so great.
+    //       This would be a perfect use of hoverIntent here.
+    $('#scorecard').mouseover(function() {
+        $pu.stop();
+    }).mouseout(function() {
+        $pu.restart();
+    })
 });
 -->
 </script>
@@ -31,15 +40,15 @@ $.PeriodicalUpdater('scorecard.php', {
 <body class="sans-serif">
 <div id="container">
 <?php if ($cookie) { ?>
-	
+
 	<p>Vote on the movies that you're interested in.</p>
 	<div class="clear"></div>
 	<div class="g3">&nbsp;</div>
 	<div id="scorecard" class="g6">
 		<?php
-		
+
 		require("scorecard.php");
-		
+
 		?>
 	</div>
 	<div class="clear"></div>
@@ -47,10 +56,10 @@ $.PeriodicalUpdater('scorecard.php', {
 	<form action="add_movie.php" method="post" class="notice_box">
 		<label>Movie Name</label>
 		<input type="text" name="name" />
-		
+
 		<p class="buttons"><input type="submit" value="Save" /></p>
 	</form>
-	
+
 <?php } else { ?>
 	<p>Yeah, that's right, you need a Facebook to login. Don't like it? You can write the LDAP driver.</p>
 <pre>
